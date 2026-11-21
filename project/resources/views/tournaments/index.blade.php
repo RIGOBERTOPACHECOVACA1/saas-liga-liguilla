@@ -116,6 +116,10 @@
                         </td>
                         <td class="px-3 py-3 font-medium text-gray-800">
                             {{ $tournament->name }}
+                            @if ($tournament->isRoundRobin())
+                                <a href="{{ route('tournaments.league', $tournament) }}" onclick="event.stopPropagation()" class="ml-2 rounded-md bg-blue-50 px-2 py-0.5 text-xs font-semibold text-blue-700 no-underline hover:bg-blue-100">Ver liga</a>
+                            @endif
+                            <span class="block text-xs font-normal text-gray-500">{{ $tournament->formatLabel() }}</span>
                         </td>
                         <td class="px-3 py-3 text-gray-600">{{ $tournament->league->name ?? '—' }}</td>
                         <td class="px-3 py-3 text-gray-600">{{ $tournament->season ?? '—' }}</td>

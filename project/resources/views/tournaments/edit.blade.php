@@ -44,9 +44,16 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-1">Formato</label>
-                    <input type="text" name="format" value="{{ old('format', $tournament->format) }}" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border text-sm">
+                    <select id="format" name="format" class="w-full border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 p-2 border text-sm">
+                        <option value="">Sin formato</option>
+                        @foreach (\App\Models\Tournament::FORMATS as $value => $label)
+                            <option value="{{ $value }}" @selected(old('format', $tournament->format) === $value)>{{ $label }}</option>
+                        @endforeach
+                    </select>
                 </div>
             </div>
+
+            @include('tournaments._league_settings')
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>

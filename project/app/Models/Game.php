@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
     'local_goals',
     'visitor_goals',
     'matchday',
+    'stage',
+    'bracket_slot',
     'status',
     'notes',
 ])]
@@ -30,6 +32,13 @@ class Game extends Model
         'finished' => 'Finalizado',
         'cancelled' => 'Cancelado',
         'postponed' => 'Pospuesto',
+    ];
+
+    public const STAGES = [
+        'regular' => 'Fase regular',
+        'quarterfinal' => 'Cuartos de final',
+        'semifinal' => 'Semifinal',
+        'final' => 'Final',
     ];
 
     protected $table = 'matches';
