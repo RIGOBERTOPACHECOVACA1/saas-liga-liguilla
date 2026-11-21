@@ -205,7 +205,7 @@ class LeaguePlayoffTest extends TestCase
 
         $this->actingAs($user)
             ->post(route('tournaments.playoff', $tournament))
-            ->assertSessionHas('status', 'Semifinal generada.');
+            ->assertSessionHas('status', 'Ronda generada: Semifinal.');
 
         $semis = $tournament->games()->where('stage', 'semifinal')->orderBy('bracket_slot')->get();
         $this->assertSame([$seeds[0], $seeds[3]], [$semis[0]->local_team_id, $semis[0]->visitor_team_id]);
@@ -217,7 +217,7 @@ class LeaguePlayoffTest extends TestCase
 
         $this->actingAs($user)
             ->post(route('tournaments.playoff', $tournament))
-            ->assertSessionHas('status', 'Final generada.');
+            ->assertSessionHas('status', 'Ronda generada: Final.');
 
         $final = $tournament->games()->where('stage', 'final')->sole();
         $this->assertSame([$seeds[0], $seeds[2]], [$final->local_team_id, $final->visitor_team_id]);

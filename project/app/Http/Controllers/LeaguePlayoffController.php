@@ -53,6 +53,6 @@ class LeaguePlayoffController extends Controller
 
         return redirect()
             ->route('tournaments.league', $tournament)
-            ->with('status', Game::STAGES[$stage].' generada.');
+            ->with('status', 'Ronda generada: '.Game::STAGES[$stage].'.');
     }
 }
